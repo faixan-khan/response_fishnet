@@ -202,7 +202,7 @@ The relatively lower accuracy at the Family level can largely be attributed to t
 
 **Q4** *I’m curious about the details of generating the missing morphological descriptions for 13,854 species. Could the authors provide the evaluation details? The 50 descriptions evaluated by experts constitute only 3.6% of the total (missing) amount. Is this sufficient to be certain about the performance? Did all 50 pass the expert check, or were there cases that were unsatisfactory or inaccurate? This would be helpful to include in the supplementary.*
 
-All 50 passed the check, but it should be noted that these descriptions are mimicking those seen in FishBase: they are not fully taxonomic descriptions. The threshold for accuracy is not expected to be same astherefore fairly low, and so high performance is not unexpected.
+All 50 passed the check. However, it is important to clarify that these summaries are designed to mimic the style and content of FishBase descriptions rather than serve as formal taxonomic entries. As such, the threshold for accuracy is lower, focusing more on capturing key visual cues relevant for species recognition.
 
 **Q5** *It would be especially helpful to see the dataset distribution details, i.e., as a plot for species and their representations, to understand the full picture as well as how many were excluded as underrepresented.*
 
