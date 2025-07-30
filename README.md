@@ -23,7 +23,7 @@ Thank you for the suggestion. We evaluate the key-point localization taks with p
 
 | Method       | Tail End | Fin  | Tail Start | Body | Mouth | Eye  | Tail End | Fin  | Tail Start | Body | Mouth | Eye  |
 |--------------|----------|------|------------|------|-------|------|----------|------|------------|------|-------|------|
-|              |                 Frequent Species                   |               Rare Species                         |
+|              |                 \multicolumn{6}{c}{**Frequent Species**}                    |               \multicolumn{6}{c}{**Rare Species**}|
 | YOLO         | 45.4     | 25.2 | 93.5       | 92   | 91.7  | 78.9 | 45.5     | 23.3 | 92.5       | 93.2 | 91.8  | 84.8 |
 | Intern2.5-VL | 0.8      | 7.9  | 2          | 4.5  | 3.3   | 9.4  | 0.8      | 10.7 | 2.6        | 8.5  | 6.3   | 16.6 |
 | MiniCPM-V-2.6| 3.2      | 10.7 | 5          | 11.8 | 2.5   | 7.6  | 4.5      | 13.2 | 6.5        | 16.6 | 3     | 10.1 |
