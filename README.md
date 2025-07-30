@@ -21,17 +21,152 @@ The results in Table 2 are reported under an open-vocabulary zero-shot setting, 
 
 Thank you for the suggestion. We evaluate the key-point localization task with the PCK metric[1]. The results corresponding to Table 4 in the main paper are presented below with pck(alpha=0.1). The results show a similar pattern to that in the main paper.
 
-| Method       | Tail End | Fin  | Tail Start | Body | Mouth | Eye  | Tail End | Fin  | Tail Start | Body | Mouth | Eye  |
-|--------------|----------|------|------------|------|-------|------|----------|------|------------|------|-------|------|
-|              |                 Frequent Species                   |               Rare Species                         |
-| YOLO         | 45.4     | 25.2 | 93.5       | 92   | 91.7  | 78.9 | 45.5     | 23.3 | 92.5       | 93.2 | 91.8  | 84.8 |
-| Intern2.5-VL | 0.8      | 7.9  | 2          | 4.5  | 3.3   | 9.4  | 0.8      | 10.7 | 2.6        | 8.5  | 6.3   | 16.6 |
-| MiniCPM-V-2.6| 3.2      | 10.7 | 5          | 11.8 | 2.5   | 7.6  | 4.5      | 13.2 | 6.5        | 16.6 | 3     | 10.1 |
-| Gemma-3      | 1.3      | 17   | 0.9        | 15.6 | 4     | 7.6  | 1.4      | 25   | 0.8        | 30.2 | 7.6   | 13.8 |
-| Pixtral-12b  | 7.4      | 26.4 | 9.5        | 28.5 | 4     | 18.3 | 9.2      | 31   | 8.8        | 36.4 | 4.9   | 24.5 |
-| LLaVa-Next   | 17.2     | 10.2 | 3.4        | 1.2  | 23.6  | 20.2 | 19.7     | 11.1 | 2.3        | 1.4  | 31.1  | 26.3 |
-| LLaVa-One    | 2.7      | 6.7  | 4.8        | 2.3  | 6     | 11   | 1.6      | 8.2  | 3.9        | 1.3  | 7.1   | 16.8 |
-| Qwen2.5-VL   | 57       | 43.9 | 43.7       | 73.8 | 55    | 55.2 | 62.5     | 44.2 | 44.7       | 75.2 | 52.9  | 55   |
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">Method</th>
+      <th colspan="6">Frequent Species</th>
+      <th colspan="6">Rare Species</th>
+    </tr>
+    <tr>
+      <th>Tail End</th>
+      <th>Fin</th>
+      <th>Tail Start</th>
+      <th>Body</th>
+      <th>Mouth</th>
+      <th>Eye</th>
+      <th>Tail End</th>
+      <th>Fin</th>
+      <th>Tail Start</th>
+      <th>Body</th>
+      <th>Mouth</th>
+      <th>Eye</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>YOLO</td>
+      <td>45.4</td>
+      <td>25.2</td>
+      <td>93.5</td>
+      <td>92.0</td>
+      <td>91.7</td>
+      <td>78.9</td>
+      <td>45.5</td>
+      <td>23.3</td>
+      <td>92.5</td>
+      <td>93.2</td>
+      <td>91.8</td>
+      <td>84.8</td>
+    </tr>
+    <tr>
+      <td>Intern2.5-VL</td>
+      <td>0.8</td>
+      <td>7.9</td>
+      <td>2.0</td>
+      <td>4.5</td>
+      <td>3.3</td>
+      <td>9.4</td>
+      <td>0.8</td>
+      <td>10.7</td>
+      <td>2.6</td>
+      <td>8.5</td>
+      <td>6.3</td>
+      <td>16.6</td>
+    </tr>
+    <tr>
+      <td>MiniCPM-V-2.6</td>
+      <td>3.2</td>
+      <td>10.7</td>
+      <td>5.0</td>
+      <td>11.8</td>
+      <td>2.5</td>
+      <td>7.6</td>
+      <td>4.5</td>
+      <td>13.2</td>
+      <td>6.5</td>
+      <td>16.6</td>
+      <td>3.0</td>
+      <td>10.1</td>
+    </tr>
+    <tr>
+      <td>Gemma-3</td>
+      <td>1.3</td>
+      <td>17.0</td>
+      <td>0.9</td>
+      <td>15.6</td>
+      <td>4.0</td>
+      <td>7.6</td>
+      <td>1.4</td>
+      <td>25.0</td>
+      <td>0.8</td>
+      <td>30.2</td>
+      <td>7.6</td>
+      <td>13.8</td>
+    </tr>
+    <tr>
+      <td>Pixtral-12b</td>
+      <td>7.4</td>
+      <td>26.4</td>
+      <td>9.5</td>
+      <td>28.5</td>
+      <td>4.0</td>
+      <td>18.3</td>
+      <td>9.2</td>
+      <td>31.0</td>
+      <td>8.8</td>
+      <td>36.4</td>
+      <td>4.9</td>
+      <td>24.5</td>
+    </tr>
+    <tr>
+      <td>LLaVa-Next</td>
+      <td>17.2</td>
+      <td>10.2</td>
+      <td>3.4</td>
+      <td>21.0</td>
+      <td>23.6</td>
+      <td>20.2</td>
+      <td>19.7</td>
+      <td>11.1</td>
+      <td>2.3</td>
+      <td>9.0</td>
+      <td>31.1</td>
+      <td>26.3</td>
+    </tr>
+    <tr>
+      <td>LLaVa-One</td>
+      <td>2.7</td>
+      <td>6.7</td>
+      <td>4.8</td>
+      <td>2.3</td>
+      <td>6.0</td>
+      <td>11.0</td>
+      <td>1.6</td>
+      <td>8.2</td>
+      <td>3.9</td>
+      <td>1.3</td>
+      <td>7.1</td>
+      <td>16.8</td>
+    </tr>
+    <tr>
+      <td>Qwen2.5-VL</td>
+      <td>57.0</td>
+      <td>43.9</td>
+      <td>43.7</td>
+      <td>73.8</td>
+      <td>55.0</td>
+      <td>55.2</td>
+      <td>62.5</td>
+      <td>44.2</td>
+      <td>44.7</td>
+      <td>75.2</td>
+      <td>52.9</td>
+      <td>55.0</td>
+    </tr>
+  </tbody>
+</table>
+
 
 [1] Yang, Yi & Ramanan, Deva. (2013). Articulated Human Detection with Flexible Mixtures of Parts. IEEE transactions on pattern analysis and machine intelligence. 35. 2878-90. 10.1109/TPAMI.2012.261. 
 
