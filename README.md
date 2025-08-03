@@ -184,7 +184,9 @@ Thank you for the feedback. As any changes in the dataset are prohibited after s
 * **`description.json:`** A single JSON file with textual descriptions for all species.
 
 
-###R2 New response
+### R2 New response
+
+
 **Q1 Part 1**  *The author did not answer my question directly: whether their key point definition has a biologically meaningful and valuable formulation? Can this formulation be applied to all fish species, since some fish species do not have fins or tails?*
 
 
@@ -272,7 +274,9 @@ Q7): Please respond to the Ethics Reviews.
 Thank you for the reminder. We have responded.
 
 
-###ETHICS
+### ETHICS
+
+
 Checklist Q12 claims “Yes – all the assets used have been properly credited” . No concrete licence table appears in the paper or appendix.
 
 All images in the dataset are either sourced from FishNet or provided by our project collaborators. FishNet's license permits free use of its images, and for the remaining data, our collaborators are the rightful owners. The dataset will be publicly available under the same license as FishNet, ensuring consistency and compliance with usage rights.  
