@@ -182,3 +182,130 @@ Thank you for the feedback. As any changes in the dataset are prohibited after s
 * **`specie_level.zip`**: Organized into folders where each folder represents a distinct species class and contains all associated image samples.
 
 * **`description.json:`** A single JSON file with textual descriptions for all species.
+
+
+###R2 New response
+**Q1 Part 1**  *The author did not answer my question directly: whether their key point definition has a biologically meaningful and valuable formulation? Can this formulation be applied to all fish species, since some fish species do not have fins or tails?*
+
+
+We note that the original comment asked whether the key points satisfied the scientific requirements, to which we have responded. They are justified primarily from a taxonomic identification perspective, both in terms of their relative location (including their absence) being important parts of low-resolution taxonomy, and of the details of the them being important (e.g. colours, patterning, size) at higher resolutions. With taxonomy being the key challenge and concern of this dataset (and the sub field as a whole).  
+
+From a biologically meaningful point of view, the presence/absence of fins is meaningful in fish locomotion, and thus movement ecology and ecological lifestyle, as is their relative positioning which contributes to these. The caudal fin morphology in particular is commonly used as a predictor of metabolic demand, which is in turn associated with individual and population growth rates. Similarly, position, size and morphology of eyes is a strong predictor of ecological lifestyle (eg benthic vs benthopelagic vs pelagics) predation strategy (eg ambush vs raptoral). We are happy to add this additional detail to the revised draft.
+
+With respect to the lack of fins, tails, or other key points in some species. Their absence is as (if not more) important to taxonomic identification, and biological questions as their presence. It must be stressed that fish represent the oldest and the most diverse vertebrate lineage on earth. They comprise more than 50% of all known vertebrate species globally. The taxa contains so much morphological diversity that, if we were to label key points common to and present in all species, we would likely be left with center body mass as the only possible one.
+
+
+
+**Q1 Part 2** *Also, I also noticed the reviewer V8SB had a concern regarding the evaluation metric for the keypoint localization. The author responded: "The distance thresholds used are relative to the object's bounding box size and are set at values like 0.1, 0.2, 0.3, 0.4, and 0.5" without any further details. Considering these two factors, I feel the current task formulation and evaluation metric regarding the fish keypoint localization have some non-ignorable issues.*
+
+We acknowledge the reviewer's concern regarding the evaluation metric for fish keypoint localization. To clarify, we use the Percentage of Correct Keypoints (PCK) metric, which is a widely adopted standard in keypoint localization tasks. The PCK metric determines a keypoint prediction to be correct if the Euclidean distance between the predicted keypoint and the ground-truth keypoint is less than a threshold, defined as α × max(object width, object height) or α × diagonal length of the object bounding box.
+
+In our case, we use the normalized diagonal formulation, where a prediction is considered correct if the distance is within α × object diagonal length. Specifically, we report PCK at α = 0.1, which is a strict threshold and commonly considered a strong indicator of localization accuracy. This setting ensures that only highly accurate predictions are counted as correct. We follow the formulation explained in [1], as used in the Waymo Open Dataset, where the diagonal-normalized PCK is employed to fairly compare keypoint predictions across objects of varying sizes.
+
+[1] Waymo Research. (n.d.). Pose Estimation Metric - Waymo Open Dataset. Retrieved from https://github.com/waymo-research/waymo-open-dataset
+
+
+**Q2** *Regarding your supervised close-set classification, how many species were used for your training and why did the pre-training on the ImageNet dataset lead to such performance improvements (13.7 to 62.1 for ConvNext). Since the ImageNet dataset does not contain too many fish species, it does not make sense that the pre-training on the ImageNet dataset will lead to a big performance improvement.*
+
+We thank the reviewer for raising this important point. While it is true that the ImageNet dataset does not contain many fish species, the benefits of ImageNet pretraining extend far beyond class-specific knowledge. Pretraining on large-scale datasets like ImageNet allows models to learn a rich hierarchy of generic visual features, including:
+* **Low-level features** such as edges, textures, and color gradients
+* **Mid-level features** like shapes, patterns, and contours
+* **High-level compositional cues** useful for object understanding
+
+These features serve as a strong initialization for a wide range of downstream tasks, even in domains that differ from ImageNet's object categories, such as underwater imagery. In fact, even without any fine-tuning, simple linear probing on ImageNet-pretrained features achieves strong performance. For instance, in [1], linear probing on a model pretrained with a joint-embedding architecture achieved 47.6% accuracy on iNaturalist classification, which clearly shows that such features generalize well despite the domain gap.
+
+This effect is further corroborated in the FishNet benchmark [2], where a ConvNeXt model pretrained on ImageNet achieved 87.7% accuracy across 'common' and' medium' family splits which corresponds to our 'frequent' species set, compared to only 34.6% when trained from scratch. Thus, while ImageNet may not cover fish species explicitly, the transferable visual priors it offers significantly boost performance in fine-grained domains like marine species classification.
+
+
+[1] Assran, M., Duval, Q., Misra, I., Bojanowski, P., Vincent, P., Rabbat, M., LeCun, Y., & Ballas, N. Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture.
+
+[2] Khan, F. F., Li, X., Temple, A. J., & Elhoseiny, M. FishNet: A Large-scale Dataset and Benchmark for Fish Recognition, Detection, and Functional Trait Prediction.
+
+**Q3 Part 1** *From the provided visual example in Fig. 1, it is indeed that the images are center-cropped, where the fish is localized at the center part.*
+
+We agree with the reviewer. While some images in our dataset appear center-cropped, it is not the case that all images are centered or uniformly framed. We will highlight images with such case in the revised draft.
+
+
+**Q3 Part 2** *The over-saturated results in Table 6 reveal that it is not easy to perform detection or segmentation for existing algorithms. The formulated task in this work will degrade to a classification task.*
+
+We believe the reviewer meant to say it is easy for existing algorithms. 
+
+The value of a dataset like FishNet++, with its focus on individual fish images, lies in its foundational "concept-first" approach to learning. This strategy mirrors how both humans and multiple works[1,2,3] have shown to help understanding by mastering simple concepts before tackling complex ones.
+
+To accurately identify different species in a cluttered underwater environment, a model must first learn the core visual "concept" of each fish. By training on images that predominantly feature a single fish, the model can learn the distinct shapes, patterns, and textures of each species in isolation. This is analogous to how humans learn to recognize an object on its own before attempting to find it in a crowd.
+
+While current systems can already solve the "easy" task of locating a fish in an image as shown in Table 6, their classification performance remains poor. This highlights a critical gap: the models can find a fish but cannot reliably determine what species it belongs to. Mastering this fundamental classification is a necessary prerequisite for any meaningful real-world detection.
+
+We agree with the reviewer that the current detection task is straightforward. However, we frame it as a deliberate and essential step toward the ultimate goal of automated marine ecosystem monitoring. FishNet++ addresses the core challenge of species identification, building the foundational knowledge required for more advanced systems. This work is a necessary step, creating a base that can be extended not only to complex underwater monitoring but also to related applications like overwater vessel tracking.
+
+[1] Ziyue Zhu, Qiang Meng, Xiao Wang, Ke Wang, Liujiang Yan, and Jian Yang. Curricular Object Manipulation in LiDAR-Based Object Detection. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), pp. 1125–1135, June 2023.
+[2] Qingyi Tao, Hao Yang, and Jianfei Cai. Exploiting Web Images for Weakly Supervised Object Detection. arXiv preprint arXiv:1707.08721, 2017.
+[3] Joseph Redmon and Ali Farhadi. YOLO9000: Better, Faster, Stronger. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), pp. 6517–6525, 2017. 
+
+
+**Q4 Part1** *Your whole dataset has 99,556 images, but only around 5,000 images have more than one fish. I would say the ratio (around 1/20) is quite low.* 
+
+We appreciate the reviewer's concern. While it is true that only a subset of our dataset (~5,000 out of 99,556 images) contains multiple fish, this reflects the inherent difficulty in collecting high-quality, naturally occurring underwater imagery of marine species. In practice, automated underwater monitoring systems, which are a primary source for FishNet++ and most marine related datasets, often record vast amounts of footage where no species are present, or the visibility is too poor for usable annotations. As a result, images with multiple clearly visible and identifiable fish are relatively rare, despite large-scale data collection efforts.
+
+Moreover, as our classification results indicate, current models already struggle with single-instance recognition due to fine-grained inter-species similarity and significant visual variability. Extending this to multi-instance scenes is a much harder problem, not only due to potential occlusion or clutter, but also because multiple fish in a single image often belong to different species, further increasing the task complexity.
+
+While our current dataset may have a lower proportion of multi-fish images, we believe it serves as a valuable and realistic foundation. It enables robust single-instance learning and provides a stepping stone for future work in multi-instance object detection within the challenging marine domain.
+
+**Q4 Part2** *The authors also did not provide any supportive evidence to address my concern regarding the false negatives and false positives. I am not convinced by the response from the authors.*
+
+In traditional object detection tasks, the model must answer both the "where" (localization) and "what" (classification) questions. However, in our evaluation, we primarily focused on the "where" component, i.e., whether the model can accurately localize fish instances without enforcing species-level classification. This was done due to the poor performance in species classification task.
+
+So, for cases with multiple instances of multiple species in an image, it is likely that errors in species recognition would dominate . However, this does not necessarily indicate a failure in localization performance.
+
+As shown in our experiments, QWEN-2.5-VL shows strong performance in detection task. Furthermore, Qwen-2.5-VL also performs well in our keypoint localization task, which reinforces its strong visual perception and spatial reasoning abilities. Based on these results, we have no strong reason to believe that models like QWEN-2.5-VL would fail in multi-instance localization scenarios, especially when species classification is decoupled from detection. While our dataset has relatively fewer multi-instance images, the results suggest that existing models possess the capabilities needed to localize multiple fish.
+
+Given that the majority of our dataset consists of single-instance images, it is reasonable to expect that YOLO baseline model trained on it may face limitations when applied to multi-instance scenarios. However, such models can still be highly valuable in several practical applications. For example: 1)Automated Fish Sorting and Grading Systems: In industrial aquaculture settings, fish often pass individually along conveyor belts or through pipes and channels, where single-instance detection models can be used to sort or grade fish based on size. 2)Individual Fish Monitoring in Research and Aquariums: In controlled environments such as research tanks, breeding programs, or aquariums, fish are often isolated or easily distinguishable. Here, single-instance models can support tasks such as behavior tracking, growth monitoring, and health assessment.
+
+
+**Q5** *I suggest that the authors add some statistics to provide a rough estimation regarding the caption accuracy. For example, the domain experts evaluate 500 or 1,000 captions from GPT-4o regarding different aspects and report the accuracy.*
+
+The descriptions were not directly generated by GPT-4o. Instead, species-specific information was first collected from reliable sources such as FishBase and other authoritative references. GPT-4o was then used to extract visually discriminative attributes from these trusted descriptions to aid in classification. This pratice ensured that the underlying content is grounded in expert-verified information, and GPT-4o's role is limited to structuring it in a way that emphasizes visual cues relevant for downstream tasks. Additionally, we got another 50 descriptions evaluated and the experts agreed on the quality of those descriptions. The experts were asked if these descriptions can be used by an average user to help recognise the particular species.   
+
+
+
+Q7): Please respond to the Ethics Reviews.
+Thank you for the reminder. We have responded.
+
+
+###ETHICS
+Checklist Q12 claims “Yes – all the assets used have been properly credited” . No concrete licence table appears in the paper or appendix.
+
+All images in the dataset are either sourced from FishNet or provided by our project collaborators. FishNet's license permits free use of its images, and for the remaining data, our collaborators are the rightful owners. The dataset will be publicly available under the same license as FishNet, ensuring consistency and compliance with usage rights.  
+
+
+Main text: GPT-4o used to generate 35 k species descriptions . Checklist Q16, however, marks “NA” for LLM usage .
+
+We apologize for the oversight. There was a misunderstanding, we initially interpreted the checklist item as referring solely to LLM usage in paper writing. However, we acknowledge that GPT-4o was used to generate species descriptions, and we will update the checklist accordingly to accurately reflect its use.
+
+No mention of stripping GPS or other metadata surfaced in the manuscript or checklist.
+
+We will ensure all the newly added images are stripped of any metadata containing any infomration that can be used to location source of the image.
+
+Checklist Q10 “Broader impacts” = “NA” ; safeguard question likewise “NA”
+
+The issue of automated fish identification in aiding illegal wildlife trade is a very important one. But please note that, in our work we do not propose any model that can be used for such purpose. We only provide a dataset that can be used for evaluating such cases and given the rare species have limited images, it is likely the model will not be able to identify them.
+
+
+
+Authors note long-tail skew and add 5 k images from under-represented regions .	
+
+The long-tail distribution reflects the natural occurrence of marine species—some species, especially those found in deep-sea environments, are inherently rare and difficult to photograph. In contrast, shallow-water species are more abundant and easier to capture. To partially mitigate this imbalance, our collaborators undertook the time-consuming task of collecting 5,000 images of under-represented deep-sea species. However, the long-tail remains a fundamental characteristic of the domain, and our dataset mirrors this natural distribution.
+
+No CO₂ or energy accounting found.
+
+Our project utilized GPT-4o for inference to extract discriminative visual descriptions from provided information for approximately 35,000 unique species. The direct, granular CO₂ emissions and energy consumption data for our specific GPT-4o inference requests were not provided by OpenAI. This is a common limitation due to the proprietary nature of large-scale AI infrastructure and the multi-tenant environment in which these models operate.
+
+Despite this, we can estimate our energy consumption based on publicly available research. According to recent analyses, such as those from Epoch AI[1] and [2], a typical GPT-4o query consumes approximately 0.3 watt-hours (Wh). For our 35,000 inferences, this would translate to an estimated energy consumption of 10,500 Wh (10.5 kWh).
+
+Recognizing that query complexity can influence energy usage, if our longer queries were to consume, for example, 0.5 Wh each (a plausible upper estimate for text-based inference), the total energy consumption would rise to approximately 17,500 Wh (17.5 kWh).
+
+To contextualize this, 17.5 kWh is roughly equivalent to the energy contained in about half a gallon of gasoline, which for a typical passenger car translates to approximately 13 to 16 miles of driving, depending on vehicle efficiency and driving conditions. While this figure may seem modest on a per-project basis, it shows the cumulative energy demand of widespread AI inference, contributing to the broader carbon footprint of the digital economy.
+
+[1] Josh You (2025), "How much energy does ChatGPT use?". Published online at epoch.ai. Retrieved from: 'https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use'
+
+[2] Nidhal Jegham, Marwan Abdelatti, Lassad Elmoubarki, Abdeltawab Hendawi, How Hungry is AI? Benchmarking Energy, Water, and Carbon Footprint of LLM Inference
