@@ -278,30 +278,30 @@ Thank you for the reminder. We have responded.
 ### ETHICS
 
 
-Checklist Q12 claims “Yes – all the assets used have been properly credited” . No concrete licence table appears in the paper or appendix.
+**1** *Checklist Q12 claims “Yes – all the assets used have been properly credited” . No concrete licence table appears in the paper or appendix.*
 
 All images in the dataset are either sourced from FishNet or provided by our project collaborators. FishNet's license permits free use of its images, and for the remaining data, our collaborators are the rightful owners. The dataset will be publicly available under the same license as FishNet, ensuring consistency and compliance with usage rights.  
 
 
-Main text: GPT-4o used to generate 35 k species descriptions . Checklist Q16, however, marks “NA” for LLM usage .
+**2** *Main text: GPT-4o used to generate 35 k species descriptions . Checklist Q16, however, marks “NA” for LLM usage.*
 
 We apologize for the oversight. There was a misunderstanding, we initially interpreted the checklist item as referring solely to LLM usage in paper writing. However, we acknowledge that GPT-4o was used to generate species descriptions, and we will update the checklist accordingly to accurately reflect its use.
 
-No mention of stripping GPS or other metadata surfaced in the manuscript or checklist.
+**3** *No mention of stripping GPS or other metadata surfaced in the manuscript or checklist.*
 
 We will ensure all the newly added images are stripped of any metadata containing any infomration that can be used to location source of the image.
 
-Checklist Q10 “Broader impacts” = “NA” ; safeguard question likewise “NA”
+**4** *Checklist Q10 “Broader impacts” = “NA” ; safeguard question likewise “NA”*
 
 The issue of automated fish identification in aiding illegal wildlife trade is a very important one. But please note that, in our work we do not propose any model that can be used for such purpose. We only provide a dataset that can be used for evaluating such cases and given the rare species have limited images, it is likely the model will not be able to identify them.
 
 
 
-Authors note long-tail skew and add 5 k images from under-represented regions .	
+**5** *Authors note long-tail skew and add 5 k images from under-represented regions.*
 
 The long-tail distribution reflects the natural occurrence of marine species—some species, especially those found in deep-sea environments, are inherently rare and difficult to photograph. In contrast, shallow-water species are more abundant and easier to capture. To partially mitigate this imbalance, our collaborators undertook the time-consuming task of collecting 5,000 images of under-represented deep-sea species. However, the long-tail remains a fundamental characteristic of the domain, and our dataset mirrors this natural distribution.
 
-No CO₂ or energy accounting found.
+**6** *No CO₂ or energy accounting found.*
 
 Our project utilized GPT-4o for inference to extract discriminative visual descriptions from provided information for approximately 35,000 unique species. The direct, granular CO₂ emissions and energy consumption data for our specific GPT-4o inference requests were not provided by OpenAI. This is a common limitation due to the proprietary nature of large-scale AI infrastructure and the multi-tenant environment in which these models operate.
 
