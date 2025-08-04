@@ -232,9 +232,7 @@ We agree with the reviewer. While some images in our dataset appear center-cropp
 
 We believe the reviewer meant to say it is easy for existing algorithms. 
 
-The value of a dataset like FishNet++, with its focus on individual fish images, lies in its foundational "concept-first" approach to learning. This strategy mirrors how both humans and multiple works[1,2,3] have shown to help understanding by mastering concepts before tackling other problems.
-
-To accurately identify different species in a cluttered underwater environment, a model must first learn the core visual "concept" of each fish. By training on images that predominantly feature a single fish, the model can learn the distinct shapes, patterns, and textures of each species in isolation. This is analogous to how humans learn to recognize an object on its own before attempting to find it in a crowd. Therefore, to learn each and every one of the 35,000 fishes, humans would typically learn concepts individually first. This is the main value provided by our dataset.
+The value of a dataset like FishNet++, with its focus on individual fish images, lies in its foundational "concept-first" approach to learning. This strategy mirrors how both humans and multiple works[1,2,3] have shown to help understanding by mastering concepts before tackling other problems. In [3] the authors have shown that learning these rich vocabulary of concept dataset can be lifted to detection setting. Therefore, to learn each and every one of the 35,000 fishes, humans would typically learn concepts individually first. This is the main value provided by our dataset.
 
 While current systems can already solve the "easy" task of locating a fish in an image as shown in Table 6, their classification performance remains poor. This highlights a critical gap: the models can find a fish but cannot reliably determine what species it belongs to. Mastering this fundamental classification is a necessary prerequisite for any meaningful real-world detection.
 
