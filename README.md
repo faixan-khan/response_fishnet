@@ -232,7 +232,7 @@ We agree with the reviewer. While some images in our dataset appear center-cropp
 
 We believe the reviewer meant to say it is easy for existing algorithms. 
 
-The value of a dataset like FishNet++, with its focus on individual fish images, lies in its foundational "concept-first" approach to learning. This strategy mirrors how both humans and methods like [1] have been shown to help understanding by mastering concepts before tackling other problems. In [1] the authors have shown that learning these rich vocabulary of concept dataset can be lifted to detection setting. Our collaborators collected the images to study the different fish species; therefore, these images are of rare species of high quality. So, to learn the concept of these species, our dataset can be of huge value, which can be utilised by methods like [1] to improve detection capabilities for marine species.
+The value of a dataset like FishNet++, with its focus on individual fish images, lies in its foundational "concept-first" approach to learning. This strategy mirrors how both humans and methods like [1] have been shown to help detection by mastering concepts before tackling other problems. Similar to how ImageNet helped improve detection in [1], our dataset can be used to improve detection for marine species. Our collaborators collected the images to study the different fish species; therefore, these images are of rare species of high quality. 
 
 [1] Joseph Redmon and Ali Farhadi. YOLO9000: Better, Faster, Stronger. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), pp. 6517–6525, 2017. 
 
@@ -311,8 +311,7 @@ Thank you for the reminder. We have responded to the Ethics Reviews.
 
 **1** *Checklist Q12 claims “Yes – all the assets used have been properly credited” . No concrete licence table appears in the paper or appendix.*
 
-All images in the dataset are either sourced from FishNet or provided by our project collaborators. FishNet's license permits free use of its images, and for the remaining data, our collaborators are the rightful owners. The dataset will be publicly available under the same license as FishNet, ensuring consistency and compliance with usage rights.  
-
+All images in the dataset are either sourced from FishNet or provided by our project collaborators. FishNet's license permits free use of its images and it has been cited, and for the remaining data, our collaborators are the rightful owners. The dataset will be publicly available under a public license which will according to the Neurips policies.
 
 **2** *Main text: GPT-4o used to generate 35 k species descriptions . Checklist Q16, however, marks “NA” for LLM usage.*
 
