@@ -190,11 +190,11 @@ Thank you for the feedback. As any changes in the dataset are prohibited after s
 **Q1 Part 1**  *The author did not answer my question directly: whether their key point definition has a biologically meaningful and valuable formulation? Can this formulation be applied to all fish species, since some fish species do not have fins or tails?*
 
 
-We note that the original comment asked whether the key points satisfied the scientific requirements, to which we have responded. They are justified primarily from a taxonomic identification perspective, both in terms of their relative location (including their absence) being important parts of low-resolution taxonomy, and of the details of the them being important (e.g. colours, patterning, size) at higher resolutions. With taxonomy being the key challenge and concern of this dataset (and the sub field as a whole).  
+We note that the original comment asked whether the key points satisfied the scientific requirements, to which we have responded. They are justified primarily from a taxonomic identification perspective, both in terms of their relative location (including their absence) being important parts of low-resolution taxonomy, and of the details of them being important (e.g., colours, patterning, size) at higher resolutions. With taxonomy being the key challenge and concern of this dataset (and the subfield as a whole).  
 
-From a biologically meaningful point of view, the presence/absence of fins is meaningful in fish locomotion, and thus movement ecology and ecological lifestyle, as is their relative positioning which contributes to these. The caudal fin morphology in particular is commonly used as a predictor of metabolic demand, which is in turn associated with individual and population growth rates. Similarly, position, size and morphology of eyes is a strong predictor of ecological lifestyle (eg benthic vs benthopelagic vs pelagics) predation strategy (eg ambush vs raptoral). We are happy to add this additional detail to the revised draft.
+From a biologically meaningful point of view, the presence/absence of fins is meaningful in fish locomotion, and thus movement ecology and ecological lifestyle, as is their relative positioning, which contributes to these. The caudal fin morphology, in particular, is commonly used as a predictor of metabolic demand, which is in turn associated with individual and population growth rates. Similarly, position, size, and morphology of eyes are a strong predictor of ecological lifestyle (eg, benthic vs benthopelagic vs pelagic) predation strategy (eg, ambush vs raptorial). We are happy to add this additional detail to the revised draft.
 
-With respect to the lack of fins, tails, or other key points in some species. Their absence is as (if not more) important to taxonomic identification, and biological questions as their presence. It must be stressed that fish represent the oldest and the most diverse vertebrate lineage on earth. They comprise more than 50% of all known vertebrate species globally. The taxa contains so much morphological diversity that, if we were to label key points common to and present in all species, we would likely be left with center body mass as the only possible one.
+With respect to the lack of fins, tails, or other key points in some species. Their absence is as (if not more) important to taxonomic identification and biological questions as their presence. It must be stressed that fish represent the oldest and most diverse vertebrate lineage on earth. They comprise more than 50% of all known vertebrate species globally. The taxa contains so much morphological diversity that, if we were to label key points common to and present in all species, we would likely be left with the center body mass as the only possible one.
 
 
 
@@ -216,7 +216,7 @@ We thank the reviewer for raising this important point. While it is true that th
 
 These features serve as a strong initialization for a wide range of downstream tasks, even in domains that differ from ImageNet's object categories, such as underwater imagery. In fact, even without any fine-tuning, simple linear probing on ImageNet-pretrained features achieves strong performance. For instance, in [1], linear probing on a model pretrained with a joint-embedding architecture achieved 47.6% accuracy on iNaturalist classification, which clearly shows that such features generalize well despite the domain gap.
 
-This effect is further corroborated in the FishNet benchmark [2], where a ConvNeXt model pretrained on ImageNet achieved 87.7% accuracy across 'common' and' medium' family splits which corresponds to our 'frequent' species set, compared to only 34.6% when trained from scratch. Thus, while ImageNet may not cover fish species explicitly, the transferable visual priors it offers significantly boost performance in fine-grained domains like marine species classification.
+This effect is further corroborated in the FishNet benchmark [2], where a ConvNeXt model pretrained on ImageNet achieved 87.7% accuracy across 'common' and' medium' family splits, which corresponds to our 'frequent' species set, compared to only 34.6% when trained from scratch. Thus, while ImageNet may not cover fish species explicitly, the transferable visual priors it offers significantly boost performance in fine-grained domains like marine species classification.
 
 
 [1] Assran, M., Duval, Q., Misra, I., Bojanowski, P., Vincent, P., Rabbat, M., LeCun, Y., & Ballas, N. Self-Supervised Learning from Images with a Joint-Embedding Predictive Architecture.
@@ -225,22 +225,16 @@ This effect is further corroborated in the FishNet benchmark [2], where a ConvNe
 
 **Q3 Part 1** *From the provided visual example in Fig. 1, it is indeed that the images are center-cropped, where the fish is localized at the center part.*
 
-We agree with the reviewer. While some images in our dataset appear center-cropped, it is not the case that all images are centered or uniformly framed. We will highlight images with such case in the revised draft.
+We agree with the reviewer. While some images in our dataset appear center-cropped, it is not the case that all images are centered or uniformly framed. We will highlight images with such cases in the revised draft.
 
 
 **Q3 Part 2** *The over-saturated results in Table 6 reveal that it is not easy to perform detection or segmentation for existing algorithms. The formulated task in this work will degrade to a classification task.*
 
 We believe the reviewer meant to say it is easy for existing algorithms. 
 
-The value of a dataset like FishNet++, with its focus on individual fish images, lies in its foundational "concept-first" approach to learning. This strategy mirrors how both humans and methods like [1] have shown to help understanding by mastering concepts before tackling other problems. In [1] the authors have shown that learning these rich vocabulary of concept dataset can be lifted to detection setting. Our collaborators collected the images to study the different fish species, therefore these images are of rare-occurring species in high quality. So, to learn the concept of these species, our dataset can be of huge value which can be utilised by methods like [1] to improve detection capabilities for marine species.
+The value of a dataset like FishNet++, with its focus on individual fish images, lies in its foundational "concept-first" approach to learning. This strategy mirrors how both humans and methods like [1] have been shown to help understanding by mastering concepts before tackling other problems. In [1] the authors have shown that learning these rich vocabulary of concept dataset can be lifted to detection setting. Our collaborators collected the images to study the different fish species; therefore, these images are of rare species of high quality. So, to learn the concept of these species, our dataset can be of huge value, which can be utilised by methods like [1] to improve detection capabilities for marine species.
 
-<!-- While current systems can already solve the task of locating a fish in an image as shown in Table 6, their classification performance remains poor. This highlights a critical gap: the models can find a fish but cannot reliably determine what species it belongs to. Mastering this fundamental classification is a necessary prerequisite for any meaningful real-world detection. -->
-
-<!-- We agree with the reviewer that the current detection task is straightforward. However, we frame it as a deliberate and essential step toward the ultimate goal of automated marine ecosystem monitoring. FishNet++ addresses the core challenge of species identification, building the foundational knowledge required for more advanced systems. This work is a necessary step, creating a base that can be extended not only to complex underwater monitoring but also to related applications like overwater vessel tracking. -->
-
-<!-- [1] Ziyue Zhu, Qiang Meng, Xiao Wang, Ke Wang, Liujiang Yan, and Jian Yang. Curricular Object Manipulation in LiDAR-Based Object Detection. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), pp. 1125–1135, June 2023. -->
-<!-- [2] Qingyi Tao, Hao Yang, and Jianfei Cai. Exploiting Web Images for Weakly Supervised Object Detection. arXiv preprint arXiv:1707.08721, 2017. -->
-[3] Joseph Redmon and Ali Farhadi. YOLO9000: Better, Faster, Stronger. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), pp. 6517–6525, 2017. 
+[1] Joseph Redmon and Ali Farhadi. YOLO9000: Better, Faster, Stronger. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), pp. 6517–6525, 2017. 
 
 
 **Q4 Part1** *Your whole dataset has 99,556 images, but only around 5,000 images have more than one fish. I would say the ratio (around 1/20) is quite low.* 
@@ -253,25 +247,25 @@ While our current dataset may have a lower proportion of multi-fish images, we b
 
 **Q4 Part2** *The authors also did not provide any supportive evidence to address my concern regarding the false negatives and false positives. I am not convinced by the response from the authors.*
 
-In traditional object detection tasks, the model must answer both the "where" (localization) and "what" (classification) questions. However, in our evaluation, we primarily focused on the "where" component, i.e., whether the model can accurately localize fish instances without enforcing species-level classification. This was done due to the poor performance in species classification task.
+In traditional object detection tasks, the model must answer both the "where" (localization) and "what" (classification) questions. However, in our evaluation, we primarily focused on the "where" component, i.e., whether the model can accurately localize fish instances without enforcing species-level classification. This was done due to the poor performance in the species classification task.
 
-So, for cases with multiple instances of multiple species in an image, it is likely that errors in species recognition would dominate . However, this does not necessarily indicate a failure in localization performance.
+So, for cases with multiple instances of multiple species in an image, it is likely that errors in species recognition would dominate. However, this does not necessarily indicate a failure in localization performance.
 
-As shown in our experiments, QWEN-2.5-VL shows strong performance in detection task. Furthermore, Qwen-2.5-VL also performs well in our keypoint localization task, which reinforces its strong visual perception and spatial reasoning abilities. Based on these results, we have no strong reason to believe that models like QWEN-2.5-VL would fail in multi-instance localization scenarios, especially when species classification is decoupled from detection. While our dataset has relatively fewer multi-instance images, the results suggest that existing models possess the capabilities needed to localize multiple fish.
+As shown in our experiments, QWEN-2.5-VL shows strong performance in the detection task. Furthermore, Qwen-2.5-VL also performs well in our keypoint localization task, which reinforces its strong visual perception and spatial reasoning abilities. Based on these results, we have no strong reason to believe that models like QWEN-2.5-VL would fail in multi-instance localization scenarios, especially when species classification is decoupled from detection. While our dataset has relatively fewer multi-instance images, the results suggest that existing models possess the capabilities needed to localize multiple fish.
 
-Given that the majority of our dataset consists of single-instance images, it is reasonable to expect that YOLO baseline model trained on it may face limitations when applied to multi-instance scenarios. However, such models can still be highly valuable in several practical applications. For example: 1)Automated Fish Sorting and Grading Systems: In industrial aquaculture settings, fish often pass individually along conveyor belts or through pipes and channels, where single-instance detection models can be used to sort or grade fish based on size. 2)Individual Fish Monitoring in Research and Aquariums: In controlled environments such as research tanks, breeding programs, or aquariums, fish are often isolated or easily distinguishable. Here, single-instance models can support tasks such as behavior tracking, growth monitoring, and health assessment.
+Given that the majority of our dataset consists of single-instance images, it is reasonable to expect that the YOLO baseline model trained on it may face limitations when applied to multi-instance scenarios. However, such models can still be highly valuable in several practical applications. For example: 1)Automated Fish Sorting and Grading Systems: In industrial aquaculture settings, fish often pass individually along conveyor belts or through pipes and channels, where single-instance detection models can be used to sort or grade fish based on size. 2)Individual Fish Monitoring in Research and Aquariums: In controlled environments such as research tanks, breeding programs, or aquariums, fish are often isolated or easily distinguishable. Here, single-instance models can support tasks such as behavior tracking, growth monitoring, and health assessment.
 
 
 **Q5** *I suggest that the authors add some statistics to provide a rough estimation regarding the caption accuracy. For example, the domain experts evaluate 500 or 1,000 captions from GPT-4o regarding different aspects and report the accuracy.*
 
 The descriptions were not directly generated by GPT-4o. Instead, species-specific information was first collected from reliable sources such as FishBase and other authoritative references. GPT-4o was then used to extract visually discriminative attributes from these expert-verified texts to aid in classification. This approach ensures that the content is grounded in domain expertise, with GPT-4o's role focused on structuring the information to highlight visual cues relevant for downstream tasks. 
 
-Moreover, belowe we show statistically that the with a 95% confidence interval that 94.4%  of generated descriptions are statistically correct.
+Moreover, below we show statistically that with a 95% confidence interval, 94.4%  of generated descriptions are statistically correct.
 
 
 
-We have a population of ~35,000 items, from which we randomly sampled 50 descriptions and all were deemed correct by marine experts. 
-You want to estimate the **true accuracy** of the entire dataset with statistical confidence.
+We have a population of ~35,000 items, from which we randomly sampled 50 descriptions, and all were deemed correct by marine experts. 
+We want to estimate the **true accuracy** of the entire dataset with statistical confidence.
 
 - Population size: **35,000**
 - Sample size: **n = 50**
@@ -309,7 +303,7 @@ With 95% confidence, **at least 94.4% of our full dataset is correct**.
 
 Q7): Please respond to the Ethics Reviews.
 
-Thank you for the reminder. We have responded.
+Thank you for the reminder. We have responded to the Ethics Reviews.
 
 
 ### ETHICS
@@ -326,7 +320,7 @@ We apologize for the oversight. There was a misunderstanding, we initially inter
 
 **3** *No mention of stripping GPS or other metadata surfaced in the manuscript or checklist.*
 
-We will ensure all the newly added images are stripped of any metadata containing any infomration that can be used to location source of the image.
+We will ensure all the newly added images are stripped of any metadata containing any information that can be used to locate the source of the image.
 
 **4** *Checklist Q10 “Broader impacts” = “NA” ; safeguard question likewise “NA”*
 
@@ -339,7 +333,7 @@ We appreciate the reviewer’s important observation regarding the potential mis
 
 **5** *Authors note long-tail skew and add 5 k images from under-represented regions.*
 
-The long-tail distribution reflects the natural occurrence of marine species—some species, especially those found in deep-sea environments, are inherently rare and difficult to photograph. In contrast, shallow-water species are more abundant and easier to capture. To partially mitigate this imbalance, our collaborators undertook the time-consuming task of collecting 5,000 images of under-represented deep-sea species. However, the long-tail remains a fundamental characteristic of the domain, and our dataset mirrors this natural distribution.
+The long-tail distribution reflects the natural occurrence of marine species, some species, especially those found in deep-sea environments, are inherently rare and difficult to photograph. In contrast, shallow-water species are more abundant and easier to capture. To partially mitigate this imbalance, our collaborators undertook the time-consuming task of collecting 5,000 images of under-represented deep-sea species. However, the long-tail remains a fundamental characteristic of the domain, and our dataset mirrors this natural distribution.
 
 **6** *No CO₂ or energy accounting found.*
 
